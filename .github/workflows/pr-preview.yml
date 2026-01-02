@@ -10,3 +10,5 @@ jobs:
     with:
       service_name: mf-host-web
       port: 4000
+    secrets:
+      infra_token: ${{ secrets.INFRA_TOKEN }}
