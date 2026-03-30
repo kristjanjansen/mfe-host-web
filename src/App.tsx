@@ -1,9 +1,8 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { useEffect } from "react";
+import { Routes, Route, Navigate, useLocation, useNavigate } from "react-router-dom";
 
 import { mfs } from "./config/config";
-
 import { MfElement } from "./components/MfElement";
-import { MfNavigation } from "./components/MfNavigation";
 
 declare global {
   namespace JSX {
@@ -16,10 +15,31 @@ declare global {
 const routeMfs = Object.values(mfs).filter((m) => m.route);
 
 export default function App() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Broadcast route changes to all MFEs
+  useEffect(() => {
+    window.dispatchEvent(
+      new CustomEvent("mfe:route-changed", {
+        detail: { path: location.pathname },
+      })
+    );
+  }, [location.pathname]);
+
+  // Listen for navigation requests from MFEs
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const path = (e as CustomEvent<{ path: string }>).detail?.path;
+      if (path) navigate(path);
+    };
+    window.addEventListener("mfe:navigate", handler);
+    return () => window.removeEventListener("mfe:navigate", handler);
+  }, [navigate]);
+
   return (
     <>
       <MfElement mf={mfs.layout}>
-        <MfNavigation mf={mfs.navigation} slot="navigation" />
         <Routes>
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
           {routeMfs.map((r) => (

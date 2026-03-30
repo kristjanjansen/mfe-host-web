@@ -10,10 +10,6 @@ export const mfs: Record<string, MfConfig> = {
     env: "VITE_MF_LAYOUT_URL",
     tag: "mf-layout",
   },
-  navigation: {
-    env: "VITE_MF_NAVIGATION_URL",
-    tag: "mf-navigation",
-  },
   cookiebot: {
     env: "VITE_MF_COOKIEBOT_URL",
     tag: "mf-cookiebot",
