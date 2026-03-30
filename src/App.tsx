@@ -45,7 +45,7 @@ export default function App() {
           {routeMfs.map((r) => (
             <Route
               key={r.path}
-              path={r.path}
+              path={`${r.path}/*`}
               element={<MfElement mf={r} slot="content" />}
             />
           ))}

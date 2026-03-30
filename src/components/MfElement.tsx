@@ -20,10 +20,11 @@ export function MfElement({
   }
 
   const Tag = mf.tag as any;
+  const basePath = mf.path ?? "/";
 
   if (children != null) {
-    return <Tag slot={slot}>{children}</Tag>;
+    return <Tag slot={slot} base-path={basePath}>{children}</Tag>;
   }
 
-  return <Tag slot={slot} />;
+  return <Tag slot={slot} base-path={basePath} />;
 }
