@@ -1,0 +1,10 @@
+{
+  "environment": "dev",
+  "country": "EE",
+  "defaultLanguage": "et",
+  "languages": ["et", "en", "ru"],
+  "features": {
+    "orders": false,
+    "darkMode": true
+  }
+}
