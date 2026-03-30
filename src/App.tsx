@@ -3,6 +3,7 @@ import { Routes, Route, Navigate, useLocation, useNavigate } from "react-router-
 
 import { mfes } from "./config/config";
 import { MfeElement } from "./components/MfeElement";
+import { prefetchMfe } from "./utils/utils";
 
 declare global {
   namespace JSX {
@@ -26,6 +27,13 @@ export default function App() {
       })
     );
   }, [location.pathname]);
+
+  // Prefetch all route MFEs on idle
+  useEffect(() => {
+    requestIdleCallback(() => {
+      routeMfes.forEach(prefetchMfe);
+    });
+  }, []);
 
   // Listen for navigation requests from MFEs
   useEffect(() => {

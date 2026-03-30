@@ -25,6 +25,15 @@ function loadScript(src: string): Promise<void> {
   return p;
 }
 
+export function prefetchMfe(mfe: MfeConfig) {
+  const src = getSrc(mfe);
+  if (document.querySelector(`link[href="${src}"]`)) return;
+  const link = document.createElement("link");
+  link.rel = "modulepreload";
+  link.href = src;
+  document.head.appendChild(link);
+}
+
 export function useMfeScript(mfe: MfeConfig) {
   const [ready, setReady] = useState(false);
   const url = getSrc(mfe);
