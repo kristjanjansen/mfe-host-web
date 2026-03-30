@@ -4,12 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
 
 async function loadConfig() {
-  const country = localStorage.getItem("configCountry") || "ee";
-  const config = await fetch(`/config/${country}.json`).then((r) => r.json());
-  const featureOverride = localStorage.getItem("configOverride");
-  if (featureOverride) {
-    config.features = { ...config.features, ...JSON.parse(featureOverride) };
-  }
+  const config = await fetch("/config/ee.json").then((r) => r.json());
   (window as any).__MFE_CONFIG__ = config;
 }
 
