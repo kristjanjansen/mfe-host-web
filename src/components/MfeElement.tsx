@@ -1,26 +1,26 @@
 import type { ReactNode } from "react";
 
-import type { MfConfig } from "../config/config";
-import { useMfScript } from "../utils/utils";
+import type { MfeConfig } from "../config/config";
+import { useMfeScript } from "../utils/utils";
 import { Loading } from "./Loading";
 
-export function MfElement({
-  mf,
+export function MfeElement({
+  mfe,
   slot,
   children,
 }: {
-  mf: MfConfig;
+  mfe: MfeConfig;
   slot?: string;
   children?: ReactNode;
 }) {
-  const ready = useMfScript(mf);
+  const ready = useMfeScript(mfe);
 
   if (!ready) {
     return <Loading slot={slot} />;
   }
 
-  const Tag = mf.tag as any;
-  const basePath = mf.path ?? "/";
+  const Tag = mfe.tag as any;
+  const basePath = mfe.path ?? "/";
 
   if (children != null) {
     return <Tag slot={slot} base-path={basePath}>{children}</Tag>;

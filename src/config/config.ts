@@ -1,11 +1,11 @@
-export type MfConfig = {
+export type MfeConfig = {
   env: string;
   tag: string;
   route?: boolean;
   path?: string;
 };
 
-export const mfs: Record<string, MfConfig> = {
+export const mfes: Record<string, MfeConfig> = {
   layout: {
     env: "VITE_MF_LAYOUT_URL",
     tag: "mf-layout",

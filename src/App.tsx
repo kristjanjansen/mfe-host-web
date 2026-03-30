@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { Routes, Route, Navigate, useLocation, useNavigate } from "react-router-dom";
 
-import { mfs } from "./config/config";
-import { MfElement } from "./components/MfElement";
+import { mfes } from "./config/config";
+import { MfeElement } from "./components/MfeElement";
 
 declare global {
   namespace JSX {
@@ -12,7 +12,7 @@ declare global {
   }
 }
 
-const routeMfs = Object.values(mfs).filter((m) => m.route);
+const routeMfes = Object.values(mfes).filter((m) => m.route);
 
 export default function App() {
   const location = useLocation();
@@ -39,20 +39,20 @@ export default function App() {
 
   return (
     <>
-      <MfElement mf={mfs.layout}>
+      <MfeElement mfe={mfes.layout}>
         <Routes>
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
-          {routeMfs.map((r) => (
+          {routeMfes.map((r) => (
             <Route
               key={r.path}
               path={`${r.path}/*`}
-              element={<MfElement mf={r} slot="content" />}
+              element={<MfeElement mfe={r} slot="content" />}
             />
           ))}
           <Route path="*" element={<div slot="content">Not found</div>} />
         </Routes>
-      </MfElement>
-      <MfElement mf={mfs.cookiebot} />
+      </MfeElement>
+      <MfeElement mfe={mfes.cookiebot} />
     </>
   );
 }

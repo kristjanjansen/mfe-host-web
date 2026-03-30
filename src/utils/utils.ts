@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import type { MfConfig } from "../config/config";
+import type { MfeConfig } from "../config/config";
 
 const loaded = new Map<string, Promise<void>>();
 
-function getSrc(mf: MfConfig) {
+function getSrc(mfe: MfeConfig) {
   const env = (import.meta as any).env || {};
-  const value = env[mf.env];
+  const value = env[mfe.env];
   return value + "/index.js";
 }
 
@@ -25,9 +25,9 @@ function loadScript(src: string): Promise<void> {
   return p;
 }
 
-export function useMfScript(mf: MfConfig) {
+export function useMfeScript(mfe: MfeConfig) {
   const [ready, setReady] = useState(false);
-  const url = getSrc(mf);
+  const url = getSrc(mfe);
 
   useEffect(() => {
     let cancelled = false;
