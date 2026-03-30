@@ -5,12 +5,17 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "build:vendor": "vite build -c vite.config.vendor.ts",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.95.2",
+    "i18next": "^26.0.2",
+    "i18next-http-backend": "^3.0.2",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0",
+    "react-dom": "^19.2.4",
+    "react-i18next": "^17.0.1",
     "react-router-dom": "^7.10.1"
   },
   "devDependencies": {

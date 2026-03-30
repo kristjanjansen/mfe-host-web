@@ -5,6 +5,17 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>mf-host-web</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "/vendor/react.js",
+          "react-dom/client": "/vendor/react-dom-client.js",
+          "react/jsx-runtime": "/vendor/react-jsx-runtime.js",
+          "@tanstack/react-query": "/vendor/tanstack-query.js",
+          "i18next": "/vendor/i18next.js"
+        }
+      }
+    </script>
     <script>
       // Theme (sync, before paint)
       const theme = localStorage.getItem("theme") ||
