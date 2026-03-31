@@ -7,6 +7,6 @@ export default defineConfig({
     port: 3000,
   },
   preview: {
-    allowedHosts: [".localtest.me"],
+    allowedHosts: [".localtest.me", ".fachwerk.dev"],
   },
 });
