@@ -6,7 +6,4 @@ export default defineConfig({
   server: {
     port: 3000,
   },
-  preview: {
-    allowedHosts: [".localtest.me", ".fachwerk.dev"],
-  },
 });
