@@ -6,7 +6,7 @@ import App from "./App.tsx";
 async function bootstrap() {
   const [config, session] = await Promise.all([
     fetch("/config/ee.json").then((r) => r.json()),
-    fetch(`${import.meta.env.VITE_API_URL}/api/v1/session`).then((r) =>
+    fetch(`${import.meta.env.MFE_API_URL}/api/v1/session`).then((r) =>
       r.json()
     ),
   ]);
